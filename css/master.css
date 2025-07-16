@@ -1,0 +1,163 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: #274e60;
+}
+
+li {
+    list-style: none;
+}
+
+li.active {
+    color: var(--main-color) !important;
+    background-color: white !important;
+}
+
+section#gallery {
+    background-color: var(--main-color);
+    min-height: 100vh;
+}
+
+section#gallery .container .row .item {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+section#gallery .container .row .item :where(img, .layout) {
+    transition: .5s;
+}
+
+section#gallery .container .row .item .layout {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+}
+
+section#gallery .container .row .item .layout svg {
+    cursor: pointer;
+}
+
+section#gallery .container .row .item:hover img {
+    transform: rotate(15deg) scale(1.2);
+}
+
+section#gallery .container .row .item:hover .layout {
+    opacity: 1;
+}
+
+section#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    z-index: -1;
+    transition: .5s;
+}
+
+section#popup.show {
+    opacity: 1;
+    z-index: 99999;
+
+}
+
+section#popup.show .item {
+    visibility: visible;
+    transform: translatey(0px);
+}
+
+section#popup .item {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    transform: translatey(-30px);
+    transition: .5s;
+}
+
+section#popup .item img {
+    border-radius: 15px;
+}
+
+section#popup .item .layout {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+section#popup .item .layout :where(svg, ul li) {
+    color: white;
+    background-color: var(--main-color);
+    width: fit-content;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: .5s;
+}
+
+section#popup .item .layout :where(svg:hover, ul li:hover) {
+    color: var(--main-color);
+    background-color: white;
+}
+
+section#popup .item .layout svg {
+    padding: 10px;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+}
+
+section#popup .item .layout svg:nth-of-type(1) {
+    top: 20px;
+    right: 20px;
+}
+
+section#popup .item .layout svg:nth-of-type(2) {
+    right: 20px;
+    top: 50%;
+    transform: translatey(-50%);
+}
+
+section#popup .item .layout svg:nth-of-type(3) {
+    left: 20px;
+    top: 50%;
+    transform: translatey(-50%);
+}
+
+section#popup .item .layout ul {
+    position: absolute;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    bottom: 20px;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+section#popup .item .layout ul li:not(:last-of-type) {
+    margin-right: 10px;
+}
