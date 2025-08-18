@@ -96,6 +96,7 @@ section#popup {
     opacity: 0;
     z-index: -1;
     transition: .5s;
+    backdrop-filter: blur(25px);
 }
 
 section#popup.show {
