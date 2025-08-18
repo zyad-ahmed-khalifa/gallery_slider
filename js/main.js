@@ -86,6 +86,35 @@ popup.addEventListener("click", function (event) {
 
 for (let li of indecators) {
     li.addEventListener("click", function () {
-        setimg(imgs[indecators.indexOf(li)])
+        if (this.classList.contains("active")) {
+            popup.querySelector(".item").classList.add("beat")
+            setTimeout(function () {
+                popup.querySelector(".item").classList.remove("beat")
+            }, 700)
+        } else {
+            setimg(imgs[indecators.indexOf(li)])
+        }
     })
 }
+
+
+// keyboard number indicator
+document.addEventListener("keydown", function (e) {
+    if (Number(e.key) <= 9 && Number(e.key) >= 0) {
+        if (Number(e.key) <= imgs.length && Number(e.key) > 0) {
+            if (popupimg.getAttribute("src") === imgs[Number(e.key) - 1].getAttribute("src")) {
+                popup.querySelector(".item").classList.add("beat")
+                setTimeout(function () {
+                    popup.querySelector(".item").classList.remove("beat")
+                }, 700)
+            }
+            setimg(imgs[Number(e.key) - 1])
+        } else {
+            popup.querySelector(".item").classList.add("shake")
+            setTimeout(function () {
+                popup.querySelector(".item").classList.remove("shake")
+            }, 500)
+        }
+    }
+})
+
