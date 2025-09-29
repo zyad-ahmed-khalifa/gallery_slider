@@ -100,7 +100,7 @@ for (let li of indecators) {
 
 // keyboard number indicator
 document.addEventListener("keydown", function (e) {
-    if (Number(e.key) <= 9 && Number(e.key) >= 0) {
+    if (!isNaN(e.key) && e.key != " ") {
         if (Number(e.key) <= imgs.length && Number(e.key) > 0) {
             if (popupimg.getAttribute("src") === imgs[Number(e.key) - 1].getAttribute("src")) {
                 popup.querySelector(".item").classList.add("beat")
@@ -117,4 +117,5 @@ document.addEventListener("keydown", function (e) {
         }
     }
 })
+
 
