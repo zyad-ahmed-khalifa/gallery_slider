@@ -1,4 +1,4 @@
-let popupul = document.querySelector("#popup ul"),
+let popupul = document.querySelector("#popup ul "),
     imgs = Array.from(document.querySelectorAll("#gallery .row .item img"));
 
 (function () {

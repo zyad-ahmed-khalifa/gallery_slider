@@ -8,25 +8,52 @@
     --main-color: #274e60;
 }
 
-.shake{
+.shake {
     animation: shake .5s;
 }
+
 @keyframes shake {
-    0%   { transform: rotate(0deg); }
-    20%  { transform: rotate(-5deg); }
-    40%  { transform: rotate(5deg); }
-    60%  { transform: rotate(-5deg); }
-    80%  { transform: rotate(5deg); }
-    100% { transform: rotate(0deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(-5deg);
+    }
+
+    40% {
+        transform: rotate(5deg);
+    }
+
+    60% {
+        transform: rotate(-5deg);
+    }
+
+    80% {
+        transform: rotate(5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
-.beat{
+.beat {
     animation: beat .5s ease-in-out;
 }
+
 @keyframes beat {
-    0%   { transform: scale(1); }
-    50%  { transform: scale(1.1); }
-    100%  { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 
@@ -116,6 +143,14 @@ section#popup .item {
     position: relative;
     transform: translatey(-30px);
     transition: .5s;
+    overflow: hidden;
+}
+
+@media (max-width:576px) {
+    section#popup .item {
+        width: 80%;
+        height: fit-content;
+    }
 }
 
 section#popup .item img {
@@ -130,10 +165,10 @@ section#popup .item .layout {
     left: 0;
 }
 
+
 section#popup .item .layout :where(svg, ul li) {
     color: white;
     background-color: var(--main-color);
-    width: fit-content;
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -172,14 +207,23 @@ section#popup .item .layout svg:nth-of-type(3) {
     transform: translatey(-50%);
 }
 
-section#popup .item .layout ul {
+section#popup .item .layout .cover {
+    overflow-x: auto;
+    padding: 0 10px;
     position: absolute;
-    display: flex;
-    margin: 0;
-    padding: 0;
     bottom: 20px;
-    left: 50%;
-    transform: translatex(-50%);
+    left: 0;
+    width: 100%;
+}
+section#popup .item .layout .cover::-webkit-scrollbar{
+    display: none;
+}
+
+section#popup .item .layout ul {
+    display: flex;
+    margin: auto;
+    padding: 0;
+    width: max-content;
 }
 
 section#popup .item .layout ul li:not(:last-of-type) {
